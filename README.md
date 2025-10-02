@@ -1,11 +1,3 @@
-<style>
-cr { color: Red }
-co { color: Orange }
-cg { color: #81BF62 }
-cb { color: #448BFC }
-cp { color: #7B44FC }
-</style>
-
 # Project Loyalty Predict [2025]
 
 Using TeoMeWhy's Loyalty program to create a Data Science project.
@@ -58,11 +50,11 @@ Good metrics to check is:
 
 With the DAU metric we want to check how many people is engaged on a daily cadence.
 
-<cp>🗨️<b>Notes:</b>
-Notice the high peaks that coincides with Teo's launch course days. Last one was in Semptember 2025 representing the higher peak. Another observation here is days that get closer to 0. It was explained that the tracking system was not live on weekends so it would be somewhat rare to have 0 on certain periods. Now, their bot is working 24/7 and users can go there even when there is no live streaming just to farm points.
-</cp> 
-
 <img src="img/dau_over_time.png">
+
+<span style="color:#7B44FC">🗨️<b>Notes:</b>
+Notice the high peaks that coincides with Teo's launch course days. Last one was in Semptember 2025 representing the higher peak. Another observation here is days that get closer to 0. It was explained that the tracking system was not live on weekends so it would be somewhat rare to have 0 on certain periods. Now, their bot is working 24/7 and users can go there even when there is no live streaming just to farm points.
+</span> 
 
 ## MAU
 
@@ -70,10 +62,10 @@ MAU metric will smooth out the daily noise.
 
 <img src="img/mau_over_time.png">
 
-<cp>🗨️<b>Notes:</b>
+<span style="color:#7B44FC">🗨️<b>Notes:</b>
 Notice the high peaks in the begining of each year, when people are possibly thinking about changing careers and start watching Teo's courses. Things seems to not get better as we see a decrease in engagement towards the end of the year.
 In September 2025, Teo's SQL course was a success in engagement.
-</cp> 
+</span> 
 
 
 ## MAU 28 Days
@@ -82,9 +74,9 @@ With MAU windowed 28 days we have months that are comparable with the same numbe
 
 <img src="img/mau28_over_time.png">
 
-<cp>🗨️<b>Notes:</b>
+<span style="color:#7B44FC">🗨️<b>Notes:</b>
 The char is similar to thr DAU chart, but now we don't have the noise of 0. This way we can see how many users remain on that that and the previous 27 days.
 Starting of the year attracting more users as we have mentioned, and then it drops towards the end. 
 Look how in 2025 the numbers have been going sideways. Teo needs to keep his users engaged in the community.
-</cp> 
+</span>
 
