@@ -53,7 +53,11 @@ With the DAU metric we want to check how many people is engaged on a daily caden
 <img src="img/dau_over_time.png">
 
 🗨️<b>Notes:</b> \
-<i>Notice the high peaks that coincides with Teo's launch course days. Last one was in Semptember 2025 representing the higher peak. Another observation here is days that get closer to 0. It was explained that the tracking system was not live on weekends so it would be somewhat rare to have 0 on certain periods. Now, their bot is working 24/7 and users can go there even when there is no live streaming just to farm points.</i>
+<i>Notice the high peaks that coincides with Teo's launch course days.
+Last one was in Semptember 2025 representing the higher peak.
+Another observation here is days that get closer to 0.
+It was explained that the tracking system was not live on weekends so it would be somewhat rare to have 0 on certain periods.
+Now, their bot is working 24/7 and users can go there even when there is no live streaming just to farm points.</i>
 
 ## MAU
 
@@ -62,7 +66,8 @@ MAU metric will smooth out the daily noise.
 <img src="img/mau_over_time.png">
 
 🗨️<b>Notes:</b> \
-<i>Notice the high peaks in the begining of each year, when people are possibly thinking about changing careers and start watching Teo's courses. Things seems to not get better as we see a decrease in engagement towards the end of the year.
+<i>Notice the high peaks in the begining of each year, when people are possibly thinking about changing careers and start watching Teo's courses.
+Things seems to not get better as we see a decrease in engagement towards the end of the year.
 In September 2025, Teo's SQL course was a success in engagement.</i>
 
 
@@ -74,7 +79,9 @@ With MAU windowed 28 days we have months that are comparable with the same numbe
 <img src="img/mau28_over_time.png">
 
 🗨️<b>Notes:</b> \
-<i>The char is similar to thr DAU chart, but now we don't have the noise of 0. This way we can see how many users remain on that that and the previous 27 days.
+<i>The chart is similar to the DAU chart, but now we don't have the noise of 0.
+This way we can see how many users remain on that that and the previous 27 days.
 Starting of the year attracting more users as we have mentioned, and then it drops towards the end. 
-Look how in 2025 the numbers have been going sideways. Teo needs to keep his users engaged in the community.</i>
+Look how in 2025 the numbers have been going sideways.
+Teo needs to keep his users engaged in the community.</i>
 
