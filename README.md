@@ -71,8 +71,7 @@ Things seems to not get better as we see a decrease in engagement towards the en
 In September 2025, Teo's SQL course was a success in engagement.</i>
 
 
-
-## MAU 28 Days
+## MAU 28 Days before
 
 With MAU windowed 28 days we have months that are comparable with the same number of weekdays.
 
@@ -84,4 +83,35 @@ This way we can see how many users remain on that that and the previous 27 days.
 Starting of the year attracting more users as we have mentioned, and then it drops towards the end. 
 Look how in 2025 the numbers have been going sideways.
 Teo needs to keep his users engaged in the community.</i>
+
+
+## User Life Cycle
+
+There is the need to understand how users behave in the community. 
+
+
+Definitions:
+- curious -> age < 7 days
+- faithful -> recency < 7 days AND previous recency < 14 days
+- tourist -> 7 <= recency <= 14 days
+- unenchanted -> 14 < recency <= 28 days
+- zombie -> recency > 28 days
+- reconquered -> recency < 7 days AND 14 <= previous recency <= 28 days
+- reborn -> recency < 7 days AND previous recency > 28 days
+
+
+| Teo's Name | Business Name | Magical Name | Logic |
+| ---------- | ------------- | ------------ | ----- |
+| Curious | Acquired | Apprendice | age < 7 days |
+| Faithful | Retained / Core | Sorcerer | recency < 7 days AND previous recency < 14 days |
+| Tourist | Light / Passive | Wondered | 7 <= recency <= 14 days |
+| Unenchanted | Churning / Dormant | Fading | 14 < recency <= 28 days |
+| Zombie | Lapsed / Inactive | Petrified | recency > 28 days |
+| Reconquered | Recovered | Reawakened | recency < 7 days AND 14 <= previous recency <= 28 days |
+| Reborn | Resurrected | Resurrected | recency < 7 days AND previous recency > 28 days |
+
+
+
+
+
 
