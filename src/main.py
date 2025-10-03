@@ -1,7 +1,6 @@
 # %%
 
 ## LIBRARY
-
 import os
 import kaggle
 
@@ -17,6 +16,12 @@ os.makedirs(data_ls_path, exist_ok=True)
 
 data_ep_path = os.path.join(project_dir, "data", "education-platform")
 os.makedirs(data_ep_path, exist_ok=True)
+
+data_srcA_path = os.path.join(project_dir, "src", "analytics")
+os.makedirs(data_srcA_path, exist_ok=True)
+
+data_srcE_path = os.path.join(project_dir, "src", "EDA")
+os.makedirs(data_srcE_path, exist_ok=True)
 
 # %%
 ## DATA

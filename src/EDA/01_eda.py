@@ -24,6 +24,10 @@ os.makedirs(data_srcA_path, exist_ok=True)
 data_srcE_path = os.path.join(project_dir, "src", "EDA")
 os.makedirs(data_srcE_path, exist_ok=True)
 
+data_img_path = os.path.join(project_dir, "img")
+os.makedirs(data_img_path, exist_ok=True)
+
+
 # %%
 # Create SQLAlchemy engine
 db_path = os.path.join(data_ls_path, "database.db")
@@ -43,16 +47,21 @@ df_dau.head()
 
 # %%
 # Chart DAU
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(12, 6))
 plt.plot(df_dau['DtDay'], df_dau['DAU'], marker='o')
 plt.title('Daily Active Users (DAU) Over Time')
 plt.xlabel('Date')
 plt.ylabel('DAU')
 plt.grid(True, alpha=0.3)
+
 # Show every nth label
 n = 7
 plt.xticks(ticks=df_dau['DtDay'][::n], labels=df_dau['DtDay'][::n], rotation=90, size=8)
 plt.tight_layout()
+
+# Save figure before showing
+plt.savefig(os.path.join(data_img_path, 'dau_over_time.png'), dpi=300, bbox_inches='tight')
+
 plt.show()
 
 # %%
@@ -75,6 +84,10 @@ plt.ylabel('MAU')
 plt.grid(True, alpha=0.3)
 plt.xticks(rotation=90, size=10)
 plt.tight_layout()
+
+# Save figure before showing
+plt.savefig(os.path.join(data_img_path, 'mau_over_time.png'), dpi=300, bbox_inches='tight')
+
 plt.show()
 
 # %%
@@ -99,6 +112,10 @@ plt.grid(True, alpha=0.3)
 n = 7
 plt.xticks(ticks=df_dau['DtDay'][::n], labels=df_dau['DtDay'][::n], rotation=90, size=8)
 plt.tight_layout()
+
+# Save figure before showing
+plt.savefig(os.path.join(data_img_path, 'mau28_over_time.png'), dpi=300, bbox_inches='tight')
+
 plt.show()
 
 # %%
