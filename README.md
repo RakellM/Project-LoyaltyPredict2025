@@ -4,6 +4,8 @@ Using TeoMeWhy's Loyalty program to create a Data Science project.
 
 You can check TeoMeWhy's material [cursos.teomewhy.org](https://cursos.teomewhy.org) (pt-br).
 
+<br>
+
 # Table of Contents
 
 - [Objective](#objective)
@@ -35,7 +37,8 @@ Identify user engagement (gain/loss) in TeoMeWhy's community.
 - [Loyalty System](https://www.kaggle.com/datasets/teocalvo/teomewhy-loyalty-system)
 - [Education Platform](https://www.kaggle.com/datasets/teocalvo/teomewhy-education-platform) 
 
----
+
+<br>
 
 # EDA
 
@@ -88,7 +91,10 @@ Teo needs to keep his users engaged in the community.</i>
 ## User Life Cycle
 
 There is the need to understand how users behave in the community. 
+The scheme below was talked during the course day and consider how the business sees the engagement churn. 
+All naming was roughtly translated and since Teo is know as "The Data Wizzard", we have decided to change the names a little, using this magic concept.
 
+<img src="img/Lifecycle_Path.jpg" style='height: 80%; width: 80%; object-fit: contain'>
 
 Definitions:
 - curious -> age < 7 days
@@ -99,6 +105,7 @@ Definitions:
 - reconquered -> recency < 7 days AND 14 <= previous recency <= 28 days
 - reborn -> recency < 7 days AND previous recency > 28 days
 
+<br>
 
 | Teo's Name | Business Name | Magical Name | Logic |
 | ---------- | ------------- | ------------ | ----- |
@@ -110,7 +117,14 @@ Definitions:
 | Reconquered | Recovered | Reawakened | recency < 7 days AND 14 <= previous recency <= 28 days |
 | Reborn | Resurrected | Resurrected | recency < 7 days AND previous recency > 28 days |
 
+<br>
 
+<img src="img/lifecycle_stacked_bar.png">
+
+🗨️<b>Notes:</b> \
+<i>Looking at all the stages that a user can be in the database, except for Zombie/Petrified, Teo's followers are not new.
+Expcept at end of August 2025 when we already knew many new comers/Apprendice came for his SQL course, most of his followers are Faithful/Sorcerer.
+And even the Apprendices that came in Aug/2025 remained in Sep/2025, as the Sorcerer bar has increased a little.</i>
 
 
 

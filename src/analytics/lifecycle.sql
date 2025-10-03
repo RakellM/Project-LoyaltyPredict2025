@@ -4,16 +4,17 @@ WITH
             IdCliente,
             SUBSTR(DtCriacao, 0, 11) AS DtDay
         FROM transacoes
+        WHERE DtCriacao < '{date}'
     ) ,
 
     tb_age AS (
         SELECT
             IdCliente,
             -- MIN(DtDay) AS DtFirstTransaction,
-            CAST(MAX( julianday('now') - julianday(DtDay) ) AS INT) AS DaysSinceFirstTransaction,
+            CAST(MAX( julianday('{date}') - julianday(DtDay) ) AS INT) AS DaysSinceFirstTransaction,
 
             -- MAX(DtDay) AS DtLastTransaction,
-            CAST(MIN( julianday('now') - julianday(DtDay) ) AS INT) AS DaysSinceLastTransaction
+            CAST(MIN( julianday('{date}') - julianday(DtDay) ) AS INT) AS DaysSinceLastTransaction
         FROM tb_daily
         GROUP BY 1
     ),
@@ -28,7 +29,7 @@ WITH
     tb_penultimate_activation AS (
         SELECT
             *,
-            CAST(julianday('now') - julianday(DtDay) AS INT) AS DaysSincePenultimateTransaction
+            CAST(julianday('{date}') - julianday(DtDay) AS INT) AS DaysSincePenultimateTransaction
         FROM tb_rn
         WHERE rnDay = 2 
     ),
@@ -41,10 +42,10 @@ WITH
                 WHEN t1.DaysSinceFirstTransaction <= 7 THEN "01-Apprendice"
                 WHEN t1.DaysSinceLastTransaction <= 7  AND (t2.DaysSincePenultimateTransaction - t1.DaysSinceLastTransaction) <= 14 THEN "02-Sorcerer"
                 WHEN t1.DaysSinceLastTransaction > 7   AND t1.DaysSinceLastTransaction <= 14 THEN "03-Wondered"
-                WHEN t1.DaysSinceLastTransaction > 14  AND t1.DaysSinceLastTransaction <= 28  THEN "04-Fading"
-                WHEN t1.DaysSinceLastTransaction > 28  THEN "05-Zombie"
+                WHEN t1.DaysSinceLastTransaction > 14  AND t1.DaysSinceLastTransaction <= 27  THEN "04-Fading"
+                WHEN t1.DaysSinceLastTransaction >= 28  THEN "05-Petrified"
                 WHEN t1.DaysSinceLastTransaction <= 7 AND ((t2.DaysSincePenultimateTransaction - t1.DaysSinceLastTransaction) > 14 AND (t2.DaysSincePenultimateTransaction - t1.DaysSinceLastTransaction) <= 28) THEN "02-Reawakened"
-                WHEN t1.DaysSinceLastTransaction <= 7 AND (t2.DaysSincePenultimateTransaction - t1.DaysSinceLastTransaction) > 28 THEN "02-Resurrected"
+                WHEN t1.DaysSinceLastTransaction <= 7 AND (t2.DaysSincePenultimateTransaction - t1.DaysSinceLastTransaction) >= 28 THEN "02-Resurrected"
             END) AS descLifeCycle
         FROM tb_age AS t1
         LEFT JOIN tb_penultimate_activation AS t2
@@ -52,10 +53,10 @@ WITH
     )
 
 SELECT 
-    descLifeCycle,
-    COUNT(*) AS Users
+    DATE('{date}', '-1 day') AS DtRef,
+    *
 FROM tb_lifecycle
-GROUP BY 1
+
 
 
 

@@ -23,6 +23,9 @@ os.makedirs(data_srcA_path, exist_ok=True)
 data_srcE_path = os.path.join(project_dir, "src", "EDA")
 os.makedirs(data_srcE_path, exist_ok=True)
 
+data_analytics_path = os.path.join(project_dir, "data", "analytics")
+os.makedirs(data_analytics_path, exist_ok=True)
+
 # %%
 ## DATA
 # Download data from Kaggle
