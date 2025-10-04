@@ -82,15 +82,15 @@ With MAU windowed 28 days we have months that are comparable with the same numbe
 
 🗨️<b>Notes:</b> \
 <i>The chart is similar to the DAU chart, but now we don't have the noise of 0.
-This way we can see how many users remain on that that and the previous 27 days.
-Starting of the year attracting more users as we have mentioned, and then it drops towards the end. 
+This way we can see how many followers remain on that that and the previous 27 days.
+Starting of the year attracting more followers as we have mentioned, and then it drops towards the end. 
 Look how in 2025 the numbers have been going sideways.
-Teo needs to keep his users engaged in the community.</i>
+Teo needs to keep his followers engaged in the community.</i>
 
 
-## User Life Cycle
+## Follower Life Cycle
 
-There is the need to understand how users behave in the community. 
+There is the need to understand how followers behave in the community. 
 The scheme below was talked during the course day and consider how the business sees the engagement churn. 
 All naming was roughtly translated and since Teo is know as "The Data Wizzard", we have decided to change the names a little, using this magic concept.
 
@@ -123,9 +123,19 @@ Definitions:
 
 🗨️<b>Notes:</b> \
 <i>Looking at all the stages that a user can be in the database, except for Zombie/Petrified, Teo's followers are not new.
-Expcept at end of August 2025 when we already knew many new comers/Apprendice came for his SQL course, most of his followers are Faithful/Sorcerer.
+Except at end of August 2025 when we already knew many new comers/Apprendice came for his SQL course, most of his followers are Faithful/Sorcerer.
 And even the Apprendices that came in Aug/2025 remained in Sep/2025, as the Sorcerer bar has increased a little.</i>
 
+## Frequency & Value
+
+For the logic of the analysis, let's only consider positive points, as we want to see how followers are engaging in the channel.
+
+<img src="img/Frequency_Value.png" style='height: 70%; width: 70%; object-fit: contain'>
+
+🗨️<b>Notes:</b> \
+<i>look how there is a isolated point with ~7K points.
+According to the business, they know this is an error, when other followers made a negative transaction, that same amount was given in absolute to another follower. And always the same follower.
+The best course of action here is remove this user from our analysis as we knoe it was a bug in Teo's point system.</i>
 
 
 
