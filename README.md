@@ -178,21 +178,22 @@ It seems too many groups for later on, Teo create a retention program of some so
 
 We have now created segment rules on SQL in this order:
 
-| Segment Name | Segment Rule |
-| ------------ | ------------ |
-| Hyper | Frequency > 10 & QtyPointsPositive ≥ 1500 |
-| Efficient | Frequency > 10 & QtyPointsPositive ≥ 1500 |
-| Undecided | Frequency ≤ 10 & QtyPointsPositive ≥ 750 |
-| Hardworking | Frequency > 10 & QtyPointsPositive ≥ 750 |
-| Lurker | Frequency < 5 |
-| Lazy | Frequency ≤ 10 |
-| Potential | Frequency > 10 |
+| Number (FreqValue) | Segment Name | Segment Rule |
+| ------------------ | ------------ | ------------ |
+| 12 | Hyper | Frequency > 10 & QtyPointsPositive ≥ 1500 |
+| 22 | Efficient | Frequency > 10 & QtyPointsPositive ≥ 1500 |
+| 11 | Undecided | Frequency ≤ 10 & QtyPointsPositive ≥ 750 |
+| 21 | Hardworking | Frequency > 10 & QtyPointsPositive ≥ 750 |
+| 00 | Lurker | Frequency < 5 |
+| 01 | Lazy | Frequency ≤ 10 |
+| 20 | Potential | Frequency > 10 |
 
 
 <img src="img/Frequency_Value_Segments.png" style='height: 70%; width: 70%; object-fit: contain'>
 
 🗨️<b>Notes:</b> \
-<i>And now we have our segments hard coded in SQL.</i>
+<i>And now we have our segments hard coded in SQL.
+The idea is also not having "Petrified/Zombie" part of that segmentation.</i>
 
 
 

@@ -22,13 +22,13 @@ WITH
         SELECT
             *,
             (CASE 
-                WHEN Frequency <= 10 AND QtyPointsPositive >= 1500 THEN 'Hyper'
-                WHEN Frequency > 10 AND QtyPointsPositive >= 1500 THEN 'Efficient'
-                WHEN Frequency <= 10 AND QtyPointsPositive >= 750 THEN 'Undecided'
-                WHEN Frequency > 10 AND QtyPointsPositive >= 750 THEN 'Hardworking'
-                WHEN Frequency < 5 THEN 'Lurker'
-                WHEN Frequency <= 10 THEN 'Lazy'
-                WHEN Frequency > 10 THEN 'Potential'
+                WHEN Frequency <= 10 AND QtyPointsPositive >= 1500 THEN '12-Hyper'
+                WHEN Frequency > 10 AND QtyPointsPositive >= 1500 THEN '22-Efficient'
+                WHEN Frequency <= 10 AND QtyPointsPositive >= 750 THEN '11-Undecided'
+                WHEN Frequency > 10 AND QtyPointsPositive >= 750 THEN '21-Hardworking'
+                WHEN Frequency < 5 THEN '00-Lurker'
+                WHEN Frequency <= 10 THEN '01-Lazy'
+                WHEN Frequency > 10 THEN '20-Potential'
             END) AS Segment
 
         FROM tb_freq_value
