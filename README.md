@@ -82,15 +82,15 @@ With MAU windowed 28 days we have months that are comparable with the same numbe
 
 🗨️<b>Notes:</b> \
 <i>The chart is similar to the DAU chart, but now we don't have the noise of 0.
-This way we can see how many users remain on that that and the previous 27 days.
-Starting of the year attracting more users as we have mentioned, and then it drops towards the end. 
+This way we can see how many followers remain on that that and the previous 27 days.
+Starting of the year attracting more followers as we have mentioned, and then it drops towards the end. 
 Look how in 2025 the numbers have been going sideways.
-Teo needs to keep his users engaged in the community.</i>
+Teo needs to keep his followers engaged in the community.</i>
 
 
-## User Life Cycle
+## Follower Life Cycle
 
-There is the need to understand how users behave in the community. 
+There is the need to understand how followers behave in the community. 
 The scheme below was talked during the course day and consider how the business sees the engagement churn. 
 All naming was roughtly translated and since Teo is know as "The Data Wizzard", we have decided to change the names a little, using this magic concept.
 
@@ -123,8 +123,77 @@ Definitions:
 
 🗨️<b>Notes:</b> \
 <i>Looking at all the stages that a user can be in the database, except for Zombie/Petrified, Teo's followers are not new.
-Expcept at end of August 2025 when we already knew many new comers/Apprendice came for his SQL course, most of his followers are Faithful/Sorcerer.
+Except at end of August 2025 when we already knew many new comers/Apprendice came for his SQL course, most of his followers are Faithful/Sorcerer.
 And even the Apprendices that came in Aug/2025 remained in Sep/2025, as the Sorcerer bar has increased a little.</i>
+
+## Frequency & Value
+
+For the logic of the analysis, let's only consider positive points, as we want to see how followers are engaging in the channel.
+
+<img src="img/Frequency_Value.png" style='height: 70%; width: 70%; object-fit: contain'>
+
+🗨️<b>Notes:</b> \
+<i>look how there is a isolated point with ~7K points.
+According to the business, they know this is an error, when other followers made a negative transaction, that same amount was given in absolute to another follower. And always the same follower.
+The best course of action here is remove this user from our analysis as we knoe it was a bug in Teo's point system.</i>
+
+<br>
+
+After removing that one outlier (bug), now we can see the real dispersion of users and their positive points.
+
+<img src="img/Frequency_Value_noOutlier.png" style='height: 70%; width: 70%; object-fit: contain'>
+
+
+## Clustering
+
+In order to run a cluster we **need** to standardize our data first.
+A simple MinMax would be good to put both variables in the same scale.
+Then we can use Non-Hierarchical clustering method (Kmeans) to segment out users.
+
+<img src="img/Frequency_Value_Clusters.png" style='height: 70%; width: 70%; object-fit: contain'>
+
+🗨️<b>Notes:</b> \
+<i>Each random_state (seed) hyperparameter will generate a different cluster grouping.
+It is up to you to create the segmentation you can explain to the business.
+You can use the cluster output to configure your own segmentation, this way you can explain and create the rules easily without relying on running clusters on new databases.</i>
+
+
+
+### Segmentation Rules
+
+Based on the conversation with the business, and what makes sense to this project, we decided to create some segment rules using the cluster as a baseline point.
+The idea here is to identify Teo's followers' behavior and see how can an action can be implemented to retain more followers and to keep them engaged.
+We will use this rules in out SQL code.
+
+<img src="img/Frequency_Value_Clusters_segmented.png" style='height: 70%; width: 70%; object-fit: contain'>
+
+🗨️<b>Notes:</b> \
+<i>It is a good practice to not overdo the number of segments here.
+Remember that this segments will work together with the life cycle groups (7) we have created.
+So, if in this segmentation part we have another 7 groups, in total we have 49 combinations possible.
+It seems too many groups for later on, Teo create a retention program of some sort.</i>
+
+
+<br>
+
+We have now created segment rules on SQL in this order:
+
+| Number (FreqValue) | Segment Name | Segment Rule |
+| ------------------ | ------------ | ------------ |
+| 12 | Hyper | Frequency > 10 & QtyPointsPositive ≥ 1500 |
+| 22 | Efficient | Frequency > 10 & QtyPointsPositive ≥ 1500 |
+| 11 | Undecided | Frequency ≤ 10 & QtyPointsPositive ≥ 750 |
+| 21 | Hardworking | Frequency > 10 & QtyPointsPositive ≥ 750 |
+| 00 | Lurker | Frequency < 5 |
+| 01 | Lazy | Frequency ≤ 10 |
+| 20 | Potential | Frequency > 10 |
+
+
+<img src="img/Frequency_Value_Segments.png" style='height: 70%; width: 70%; object-fit: contain'>
+
+🗨️<b>Notes:</b> \
+<i>And now we have our segments hard coded in SQL.
+The idea is also not having "Petrified/Zombie" part of that segmentation.</i>
 
 
 

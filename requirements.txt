@@ -1,4 +1,6 @@
 --Python
-pandas==2.0.3
-slqalchemy==2.0.20
-matplotlib==3.7.1
+pandas==2.3.3
+slqalchemy==2.0.43
+matplotlib==3.10.6
+seaborn==0.13.2
+scikit-learn==1.7.2
