@@ -4,3 +4,4 @@ slqalchemy==2.0.43
 matplotlib==3.10.6
 seaborn==0.13.2
 scikit-learn==1.7.2
+kaggle==1.7.4
