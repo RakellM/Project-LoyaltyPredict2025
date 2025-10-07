@@ -68,9 +68,14 @@ dates = [
 # %%
 for i in dates:
 
-    with engine_analytical.connect() as conn:
-        conn.execute(sqlalchemy.text(f"DELETE FROM life_cycle WHERE DtRef = DATE('{i}', '-1 day')"))
-        conn.commit()
+    try:
+        with engine_analytical.connect() as conn:
+            query_delete = f"DELETE FROM life_cycle WHERE DtRef = DATE('{i}', '-1 day')"
+            print(query_delete)
+            conn.execute(sqlalchemy.text(query_delete))
+            conn.commit()
+    except Exception as err:
+        print(f"An error occurred: {err}")
 
     query_format = query.format(date=i)
     df = pd.read_sql_query(query_format, engine_app)
