@@ -76,7 +76,7 @@ X = MinMax.fit_transform(df[['Frequency', 'QtyPointsPositive']])
 
 # %%
 # Clustering
-kmeans = cluster.KMeans(n_clusters=5, random_state=21, max_iter=1000)
+kmeans = cluster.KMeans(n_clusters=5, random_state=42, max_iter=1000)
 kmeans.fit(X)
 
 df['Cluster'] = kmeans.labels_
@@ -93,13 +93,35 @@ plt.title('Frequency vs Qty Points Positive with Clusters')
 plt.xlabel('Frequency')
 plt.ylabel('Qty Points Positive')
 plt.legend(title='Cluster', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+plt.hlines(y=1500, xmin=0, xmax=25, colors='black', linestyles='dashed')
+plt.hlines(y=750, xmin=0, xmax=25, colors='black', linestyles='dashed')
+
+plt.vlines(x=4, ymin=0, ymax=750, colors='black', linestyles='dashed')
+plt.vlines(x=10, ymin=0, ymax=3000, colors='black', linestyles='dashed')
+
 plt.grid(True)
 
 # Save figure before showing
-plt.savefig(os.path.join(data_img_path, 'Frequency_Value_Clusters.png'), dpi=300, bbox_inches='tight')
+plt.savefig(os.path.join(data_img_path, 'Frequency_Value_Clusters_segmented.png'), dpi=300, bbox_inches='tight')
 
 plt.show()
 
 # %%
+# Plot with Segment
+sns.scatterplot(data=df, x='Frequency', y='QtyPointsPositive', hue='Segment', palette='deep')
+plt.title('Frequency vs Qty Points Positive with Segment')
+plt.xlabel('Frequency')
+plt.ylabel('Qty Points Positive')
+plt.legend(title='Segment', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+plt.grid(True)
+
+# Save figure before showing
+plt.savefig(os.path.join(data_img_path, 'Frequency_Value_Segments.png'), dpi=300, bbox_inches='tight')
+
+plt.show()
 
 
+
+# %%
