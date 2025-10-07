@@ -88,6 +88,7 @@ WITH
     )
 
 SELECT
+    DATE('{date}', '-1 day') AS DtRef,
     t1.*,
     t2.Frequency,
     t2.QtyPointsPositive,
