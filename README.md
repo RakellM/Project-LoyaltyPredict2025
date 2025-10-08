@@ -196,5 +196,30 @@ We have now created segment rules on SQL in this order:
 The idea is also not having "Petrified/Zombie" part of that segmentation.</i>
 
 
+## Business Discussion
+
+Let's look at the life cycle stages on Teo's followers from August/2025 (excluding "Petrified/Zombies").
+
+| DtRef      | descLifeCycle  | QtyFollowers | % Followers |
+| ---------- | -------------- | ------------ | ----------- |
+| 2025-08-31 | 01-Apprendice  | 391          | 53.93       |
+| 2025-08-31 | 02-Sorcerer    | 170          | 23.45       |
+| 2025-08-31 | 02-Resurrected | 57           | 7.86        |
+| 2025-08-31 | 04-Fading      | 56           | 7.72        |
+| 2025-08-31 | 03-Wondered    | 39           | 5.38        |
+| 2025-08-31 | 02-Reawakened  | 12           | 1.66        |
+
+This table shows that 23.45% of his followers are in the engagement category we would want them to be: **Sorcerer**.
+And that is a very small portion. \
+Knowing this, Teo is thinking about creating a model that would help him understand which of the groups or group segments he can touch to get his followers more engaged and make them become **Sorcerers**.
+
+### Objective of this project
+
+Understand how Teo's followers can become Sorcerers.
+
+
+
+
+
 
 
