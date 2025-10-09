@@ -5,3 +5,5 @@ matplotlib==3.10.6
 seaborn==0.13.2
 scikit-learn==1.7.2
 kaggle==1.7.4
+datetime==5.5
+tqdm==4.67.1

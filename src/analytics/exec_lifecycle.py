@@ -4,6 +4,8 @@ import pandas as pd
 import sqlalchemy
 
 import os
+import datetime
+from tqdm import tqdm
 
 # %%
 ## PATH
@@ -30,7 +32,7 @@ def import_query(path):
 
 query = import_query(os.path.join(data_srcA_path, "lifecycle.sql"))
 # print(query)
-print(query.format(date='2025-08-31'))
+# print(query.format(date='2025-08-31'))
 
 # %%
 # Create SQLAlchemy engine
@@ -42,36 +44,24 @@ engine_analytical = sqlalchemy.create_engine(f'sqlite:///{db_analytical_path}')
 
 # %%
 
-dates = [
-    '2024-04-01',
-    '2024-05-01',
-    '2024-06-01',
-    '2024-07-01',
-    '2024-08-01',
-    '2024-09-01',
-    '2024-10-01',
-    '2024-11-01',  
-    '2024-12-01',
-    '2025-01-01',
-    '2025-02-01',
-    '2025-03-01',
-    '2025-04-01',
-    '2025-05-01',
-    '2025-06-01',
-    '2025-07-01',
-    '2025-08-01',
-    '2025-09-01',
-    '2025-10-01'
-]
+def date_range(start, stop):
+    dates = []
+    while start <= stop:
+        dates.append(start)
+        dt_start = datetime.datetime.strptime(start, '%Y-%m-%d') + datetime.timedelta(days=1)
+        start = datetime.datetime.strftime(dt_start, '%Y-%m-%d')
+        
+    return dates
 
+dates = date_range('2024-03-01', '2025-10-01')
 
 # %%
-for i in dates:
+for i in tqdm(dates):
 
     try:
         with engine_analytical.connect() as conn:
             query_delete = f"DELETE FROM life_cycle WHERE DtRef = DATE('{i}', '-1 day')"
-            print(query_delete)
+            # print(query_delete)
             conn.execute(sqlalchemy.text(query_delete))
             conn.commit()
     except Exception as err:
@@ -80,7 +70,5 @@ for i in dates:
     query_format = query.format(date=i)
     df = pd.read_sql_query(query_format, engine_app)
     df.to_sql("life_cycle", engine_analytical, index=False, if_exists='append' )
-
-
 
 # %%
