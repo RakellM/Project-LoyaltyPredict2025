@@ -6,7 +6,7 @@ WITH
             SUBSTR(DtCriacao, 0,11) AS DtDay,
             CAST(SUBSTR(DtCriacao, 12, 2) AS INT) AS DtHour
         FROM transacoes
-        WHERE DtCriacao < '2025-10-01'
+        WHERE DtCriacao < '{date}'
 
     ),
 
@@ -15,37 +15,37 @@ WITH
         SELECT
             IdCliente,
 
-            MAX(julianday('2025-10-01') - julianday(DtCriacao)) AS AgeDays,
+            MAX(julianday('{date}') - julianday(DtCriacao)) AS AgeDays,
 
             COUNT(DISTINCT DtDay) AS QtyActivationFullLife,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-7 day') THEN DtDay END) AS QtyActivationD7,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-14 day') THEN DtDay END) AS QtyActivationD14,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-28 day') THEN DtDay END) AS QtyActivationD28,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-56 day') THEN DtDay END) AS QtyActivationD56,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-7 day') THEN DtDay END) AS QtyActivationD7,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-14 day') THEN DtDay END) AS QtyActivationD14,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-28 day') THEN DtDay END) AS QtyActivationD28,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-56 day') THEN DtDay END) AS QtyActivationD56,
 
             COUNT(DISTINCT IdTransacao) AS QtyTransactionFullLife,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-7 day') THEN IdTransacao END) AS QtyTransactionD7,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-14 day') THEN IdTransacao END) AS QtyTransactionD14,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-28 day') THEN IdTransacao END) AS QtyTransactionD28,
-            COUNT(DISTINCT CASE WHEN DtDay > DATE('2025-10-01', '-56 day') THEN IdTransacao END) AS QtyTransactionD56,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-7 day') THEN IdTransacao END) AS QtyTransactionD7,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-14 day') THEN IdTransacao END) AS QtyTransactionD14,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-28 day') THEN IdTransacao END) AS QtyTransactionD28,
+            COUNT(DISTINCT CASE WHEN DtDay > DATE('{date}', '-56 day') THEN IdTransacao END) AS QtyTransactionD56,
 
             SUM(QtdePontos) AS BalanceFullLife,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-7 day') THEN QtdePontos ELSE 0 END) AS BalanceD7,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-14 day') THEN QtdePontos ELSE 0 END) AS BalanceD14,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-28 day') THEN QtdePontos ELSE 0 END) AS BalanceD28,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-56 day') THEN QtdePontos ELSE 0 END) AS BalanceD56,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-7 day') THEN QtdePontos ELSE 0 END) AS BalanceD7,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-14 day') THEN QtdePontos ELSE 0 END) AS BalanceD14,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-28 day') THEN QtdePontos ELSE 0 END) AS BalanceD28,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-56 day') THEN QtdePontos ELSE 0 END) AS BalanceD56,
 
             SUM(CASE WHEN QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveFullLife,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-7 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD7,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-14 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD14,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-28 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD28,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-56 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD56,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-7 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD7,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-14 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD14,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-28 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD28,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-56 day') AND QtdePontos > 0 THEN QtdePontos ELSE 0 END) AS QtyPointsPositiveD56,
 
             SUM(CASE WHEN QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeFullLife,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-7 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD7,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-14 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD14,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-28 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD28,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-56 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD56,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-7 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD7,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-14 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD14,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-28 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD28,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-56 day') AND QtdePontos < 0 THEN QtdePontos ELSE 0 END) AS QtyPointsNegativeD56,
 
             -- remember this dates are UTC time and Teo is in UTC-3
             COUNT(CASE WHEN DtHour BETWEEN 10 AND 14 THEN IdTransacao END) AS QtyTransactionMorning,
@@ -94,10 +94,10 @@ WITH
         SELECT
             IdCliente,
             SUM(Duration) AS QtyHoursFullLife,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-7 day') THEN Duration ELSE 0 END) AS QtyHoursD7,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-14 day') THEN Duration ELSE 0 END) AS QtyHoursD14,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-28 day') THEN Duration ELSE 0 END) AS QtyHoursD28,
-            SUM(CASE WHEN DtDay >= DATE('2025-10-01', '-56 day') THEN Duration ELSE 0 END) AS QtyHoursD56
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-7 day') THEN Duration ELSE 0 END) AS QtyHoursD7,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-14 day') THEN Duration ELSE 0 END) AS QtyHoursD14,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-28 day') THEN Duration ELSE 0 END) AS QtyHoursD28,
+            SUM(CASE WHEN DtDay >= DATE('{date}', '-56 day') THEN Duration ELSE 0 END) AS QtyHoursD56
 
         FROM tb_hours_day
         GROUP BY 1
@@ -120,7 +120,7 @@ WITH
         SELECT
             IdCliente,
             AVG(julianday(DtDay) - julianday(LagDay)) AS AvgIntervalDaysFullLife,
-            AVG(CASE WHEN DtDay >= DATE('2025-10-01', '-28 day') THEN julianday(DtDay) - julianday(LagDay) ELSE NULL END) AS AvgIntervalDaysD28
+            AVG(CASE WHEN DtDay >= DATE('{date}', '-28 day') THEN julianday(DtDay) - julianday(LagDay) ELSE NULL END) AS AvgIntervalDaysD28
 
         FROM tb_lag_day
         GROUP BY 1
@@ -189,7 +189,7 @@ WITH
     ) 
 
 SELECT
-    DATE('2025-10-01') AS DtRef,
+    DATE('{date}') AS DtRef,
     *
 FROM tb_join
 

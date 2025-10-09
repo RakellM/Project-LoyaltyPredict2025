@@ -7,3 +7,4 @@ scikit-learn==1.7.2
 kaggle==1.7.4
 datetime==5.5
 tqdm==4.67.1
+argparse==1.4.0

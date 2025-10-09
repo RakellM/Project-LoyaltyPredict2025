@@ -6,7 +6,7 @@ WITH
             Frequency,
             descLifeCycle AS descLifeCycleCurrent
         FROM life_cycle
-        WHERE DtRef = DATE('2025-10-01', '-1 day')
+        WHERE DtRef = DATE('{date}', '-1 day')
     ),
 
     tb_lifecycle_D28 AS (
@@ -15,7 +15,7 @@ WITH
             IdCliente,
             descLifeCycle AS descLifeCycleD28
         FROM life_cycle
-        WHERE DtRef = date('2025-10-01', '-28 day')
+        WHERE DtRef = date('{date}', '-28 day')
 
     ),
 
@@ -45,7 +45,7 @@ WITH
             1.0 * SUM(CASE WHEN descLifeCycle = '02-Resurrected' THEN 1 ELSE 0 END) / COUNT(1) AS pctResurrected
 
         FROM life_cycle
-        WHERE DtRef < '2025-10-01'
+        WHERE DtRef < '{date}'
         GROUP BY 1
 
     ),
@@ -79,7 +79,7 @@ WITH
     )
 
 SELECT 
-    DATE('2025-10-01', '-1 day') AS DtRef,
+    DATE('{date}', '-1 day') AS DtRef,
     *
 FROM tb_join
 
