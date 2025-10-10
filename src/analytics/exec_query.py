@@ -67,9 +67,12 @@ def exec_query(table, database_origin, database_target, dt_start, dt_stop, month
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--db_origin", choices=['loyalty_system', 'education-platform', 'analytics'], default='loyalty-system')
-    parser.add_argument("--db_target", choices=['analytics'], default='analytics')
-    parser.add_argument("--table", type=str, help="Table that will be processed with same name as file.")
+    parser.add_argument("--db_origin", choices=['loyalty-system', 'education-platform', 'analytics'], 
+                        default='loyalty-system')
+    parser.add_argument("--db_target", choices=['analytics'], 
+                        default='analytics')
+    parser.add_argument("--table", type=str, 
+                        help="Table that will be processed with same name as file.")
         
     now = datetime.datetime.now().strftime("%Y-%m-%d")
     parser.add_argument("--start", type=str, default=now)
@@ -82,3 +85,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# %%

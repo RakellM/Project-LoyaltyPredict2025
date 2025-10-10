@@ -3,7 +3,7 @@ WITH
 
         SELECT 
             *,
-            SUBSTR(DtCriacao, 0,11) AS DtDay,
+            SUBSTR(DtCriacao, 0, 11) AS DtDay,
             CAST(SUBSTR(DtCriacao, 12, 2) AS INT) AS DtHour
         FROM transacoes
         WHERE DtCriacao < '{date}'
@@ -189,7 +189,7 @@ WITH
     ) 
 
 SELECT
-    DATE('{date}') AS DtRef,
+    DATE('{date}', '-1 day') AS DtRef,
     *
 FROM tb_join
 
